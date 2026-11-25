@@ -1,0 +1,26 @@
+{
+  "vni": 5000,
+  "agingTime": 300,
+  "duplicateWindow": 10,
+  "vteps": [{ "id": "vtep1" }, { "id": "vtep2" }, { "id": "vtep3" }],
+  "floodTable": { "5000": ["vtep1", "vtep2", "vtep3"] },
+  "vms": [
+    { "id": "vm1", "mac": "00:00:00:00:00:11", "ip": "10.0.0.11", "vtep": "vtep1" },
+    { "id": "vm2", "mac": "00:00:00:00:00:12", "ip": "10.0.0.12", "vtep": "vtep2" }
+  ],
+  "remoteCache": [
+    { "vtep": "vtep2", "vni": 5000, "ip": "10.0.0.11", "mac": "00:00:00:00:00:11", "nextHopVtep": "vtep1", "learnedAt": 0 },
+    { "vtep": "vtep3", "vni": 5000, "ip": "10.0.0.11", "mac": "00:00:00:00:00:11", "nextHopVtep": "vtep1", "learnedAt": 0 }
+  ],
+  "events": [
+    { "type": "arp_request", "time": 1, "vni": 5000, "ingressVtep": "vtep2", "senderIp": "10.0.0.12", "senderMac": "00:00:00:00:00:12", "targetIp": "10.0.0.11" },
+    { "type": "migration", "time": 5, "vm": "vm1", "from": "vtep1", "to": "vtep3", "phase": "start" },
+    { "type": "arp_request", "time": 6, "vni": 5000, "ingressVtep": "vtep2", "senderIp": "10.0.0.12", "senderMac": "00:00:00:00:00:12", "targetIp": "10.0.0.11" },
+    { "type": "arp_reply", "time": 7, "vni": 5000, "ingressVtep": "vtep3", "senderIp": "10.0.0.11", "senderMac": "00:00:00:00:00:11", "gratuitous": true },
+    { "type": "migration", "time": 10, "vm": "vm1", "from": "vtep1", "to": "vtep3", "phase": "complete" },
+    { "type": "arp_request", "time": 11, "vni": 5000, "ingressVtep": "vtep2", "senderIp": "10.0.0.12", "senderMac": "00:00:00:00:00:12", "targetIp": "10.0.0.11" },
+    { "type": "arp_reply", "time": 12, "vni": 5000, "ingressVtep": "vtep3", "senderIp": "10.0.0.11", "senderMac": "00:00:00:00:00:11", "gratuitous": true },
+    { "type": "arp_request", "time": 13, "vni": 5000, "ingressVtep": "vtep2", "senderIp": "10.0.0.12", "senderMac": "00:00:00:00:00:12", "targetIp": "10.0.0.11" },
+    { "type": "arp_request", "time": 400, "vni": 5000, "ingressVtep": "vtep2", "senderIp": "10.0.0.12", "senderMac": "00:00:00:00:00:12", "targetIp": "10.0.0.11" }
+  ]
+}

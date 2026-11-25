@@ -1,0 +1,14 @@
+{
+  "name": "vxlan-arp-suppression-validator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "VXLAN ARP 抑制、泛洪与主机迁移的模拟验证器（所有报文均为模拟）",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test",
+    "simulate": "node src/cli.js examples/migration.json"
+  }
+}
